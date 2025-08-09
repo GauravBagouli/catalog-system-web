@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { decodeData, encodeData } from "../../helpers/auth";
 import { useEffect, useState } from "react";
 import API from "../../helpers/api";
+import { ChevronLeft } from 'lucide-react';
 
 const CatalogPage = () => {
     const location = useLocation();
@@ -32,7 +33,9 @@ const CatalogPage = () => {
   return (
     <div className="w-full mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-        Product Details
+        <div className="flex items-center gap-2">
+            <ChevronLeft onClick={() => window.history.back()} className="cursor-pointer" /> Product Details
+        </div>
       </h1>
       <CatalogDetails productData={productData} />
     </div>

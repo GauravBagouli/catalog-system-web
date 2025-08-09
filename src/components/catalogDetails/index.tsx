@@ -77,7 +77,7 @@ const ProductDetailPage = ({ productData }: any) => {
         <img
           src={selectedImage}
           alt={product?.name}
-          className="w-full h-84 object-cover rounded-lg shadow"
+          className="w-full max-h-[48vh] object-cover rounded-lg shadow"
         />
         <div className="flex gap-4 mt-4">
           {product?.product_images?.map((img: string, idx: number) => (

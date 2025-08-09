@@ -65,12 +65,8 @@ const AddProductForm = ({ onClose }: Props) => {
 
     for (let i = 0; i < variants.length; i++) {
       const v = variants[i];
-      if (!v.size.trim()) {
-        toast.error(`Variant ${i + 1}: size is required`);
-        return;
-      }
-      if (!v.color.trim()) {
-        toast.error(`Variant ${i + 1}: color is required`);
+      if (!v.size.trim() && !v.color.trim()) {
+        toast.error(`Variant ${i + 1}: size or color is required`);
         return;
       }
       if (v.price === "" || isNaN(Number(v.price)) || Number(v.price) < 0) {
