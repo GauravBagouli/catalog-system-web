@@ -222,7 +222,7 @@ const Catalog = ({}: Props) => {
             />
             <div className="flex justify-end gap-2">
               <button
-                onClick={() => setShowTypeModal(false)}
+                onClick={() => { setShowTypeModal(false); setNewTypeName(""); }}
                 className="px-4 py-2 bg-gray-600 rounded"
               >
                 Cancel

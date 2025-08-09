@@ -15,12 +15,23 @@ const ProductDetailPage = ({ productData }: any) => {
 
   const attributes = useMemo(() => {
     const attrMap: Record<string, Set<string>> = {};
+    
+    if (product?.Variants?.length) {
+    attrMap["size"] = new Set(
+      product.Variants
+        .map((v: Variant) => v.size)
+        .filter((size: any): size is string => !!size)
+    );
 
-    if (product?.Variants) {
-      attrMap["size"] = new Set(product.Variants.map((v: Variant) => v.size));
-      attrMap["color"] = new Set(product.Variants.map((v: Variant) => v.color));
+    const colors = product.Variants
+      .map((v: Variant) => v.color)
+      .filter((color: any): color is string => !!color);
+
+    if (colors.length > 0) {
+      attrMap["color"] = new Set(colors);
     }
-
+  }
+    
     return Object.fromEntries(
       Object.entries(attrMap).map(([k, set]) => [k, Array.from(set)])
     );
@@ -125,7 +136,7 @@ const ProductDetailPage = ({ productData }: any) => {
           <div key={attrName} className="mt-6">
             <h3 className="font-semibold mb-2 capitalize">{attrName}</h3>
             <div className="flex flex-wrap gap-3">
-              {values.map((val) => (
+              {values && values?.map((val) => (
                 <button
                   key={val}
                   onClick={() => {
