@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST = "https://catalog-system-api.onrender.com";
+const HOST = import.meta.env.VITE_API_URL;
 
 const VERSION = "/api";
 
