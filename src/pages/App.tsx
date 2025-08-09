@@ -1,17 +1,14 @@
 // src/App.tsx
 import { Routes, Route } from "react-router-dom";
-import Home from "./home";
 import ProductTypeList from "./catalog/index";
-import ProductDetails from "./productDetails";
-
+import ProductDetails from "./catalog/details";
 
 function App() {
   return (
     <div className="p-4">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product-types" element={<ProductTypeList />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/" element={<ProductTypeList />} />
+        <Route path="/details" element={<ProductDetails />} />
       </Routes>
     </div>
   );

@@ -5,11 +5,14 @@ import { getProductList } from "../../stores/actions/product";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../stores/reducers";
 import API from "../../helpers/api";
+import { useNavigate } from "react-router-dom";
+import { encodeData } from "../../helpers/auth";
 
 interface Props {}
 
 const Catalog = ({}: Props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { productList, productListLoading }: { productList: Product[], productListLoading: boolean } = useSelector(
     (state: RootState) => state.product
   );
@@ -31,6 +34,11 @@ const Catalog = ({}: Props) => {
       dispatch(getProductList() as any);
     }
   };
+
+  const handleProductClick = (productId: number) => {
+    let encodedId = encodeData(productId);
+    navigate(`/details?id=${encodedId}`);
+  }
 
   useEffect(() => {
     if (productList?.length > 0) {
@@ -116,6 +124,7 @@ const Catalog = ({}: Props) => {
             <div
               key={product.id}
               className="border rounded-xl shadow hover:shadow-lg transition-all bg-white dark:bg-gray-800 p-4"
+              onClick={() => handleProductClick(parseInt(product.id))}
             >
               {product.product_images?.[0] ? (
                 <img

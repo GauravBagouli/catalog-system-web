@@ -4,7 +4,7 @@ export interface Product {
   product_type_id: string;
   name: string;
   description: string;
-  product_images: any[]; // Can be typed better if needed
+  product_images: any[];
   status: string;
   created_at: Date;
   updated_at: Date;
