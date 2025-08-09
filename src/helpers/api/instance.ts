@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST = "http://localhost:7777";
+const HOST = "https://catalog-system-api.onrender.com";
 
 const VERSION = "/api";
 
